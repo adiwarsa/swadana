@@ -35,7 +35,7 @@ jobs:
     - name: Connecting to Server via SSH, meow~
       uses: garygrossgarten/github-action-ssh@release
       with:
-        command: for dir in swadana/*/; do ( rm -rf "${dir%/}" ) done && for zip in swadana/*.zip; do ( unzip -o "$zip" -d swadana/ && rm -rf "$zip") done && cd swadana/ && composer update && sudo chown -R sleepyboy:www-data ../swadana && sudo find ../swadana -type f -exec chmod 664 {} \; && sudo find ../swadana -type d -exec chmod 775 {} \; && sudo chgrp -R www-data storage bootstrap/cache && sudo chmod -R ug+rwx storage bootstrap/cache && php artisan optimize && php artisan storage:link
+        command: for dir in swadana/*/; do ( rm -rf "${dir%/}" ) done && for zip in swadana/*.zip; do ( unzip -o "$zip" -d swadana/ && rm -rf "$zip") done && cd swadana/ && composer update && php artisan optimize && php artisan storage:link && sudo chown -R sleepyboy:www-data ../swadana && sudo find ../swadana -type f -exec chmod 664 {} \; && sudo find ../swadana -type d -exec chmod 775 {} \; && sudo chgrp -R www-data storage bootstrap/cache && sudo chmod -R ug+rwx storage bootstrap/cache
         host: ${{ secrets.LARAVEL_HOSTING_SERVER }}
         port: 22
         username: ${{ secrets.LARAVEL_HOSTING_USER_SSH }}
