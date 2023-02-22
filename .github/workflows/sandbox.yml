@@ -14,8 +14,6 @@ jobs:
     - uses: actions/setup-node@master
     - name: Im will installing project dependencies right now.
       run: npm install
-    - name: Building the project, hehe~
-      run: npm run production
     - name: Copy .env for you~
       run: php -r "file_exists('.env') || copy('.env.example', '.env');"
     - name: Setup PHP right now, nyaa~
