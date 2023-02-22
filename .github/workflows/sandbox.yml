@@ -16,7 +16,7 @@ jobs:
     - name: Setup PHP right now, nyaa~
       uses: shivammathur/setup-php@v2
       with:
-        php-version: '7.4'
+        php-version: '8.2'
     - name: Install Dependencies, UwU~
       run: composer update
     - name: Generate key, tehee~
