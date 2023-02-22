@@ -1,0 +1,51 @@
+name: CI/CD Sandbox Hosting (Kuronekosan)
+
+on:
+  release:
+    types: [ prereleased ]
+
+jobs:
+  web-deploy:
+    name: Deploy
+    runs-on: ubuntu-latest
+    steps:
+    - name: Im getting latest code, Master.
+      uses: actions/checkout@v3
+    - uses: actions/setup-node@master
+    - name: Im will installing project dependencies right now.
+      run: npm install
+    - name: Building the project, hehe~
+      run: npm run production
+    - name: Copy .env for you~
+      run: php -r "file_exists('.env') || copy('.env.example', '.env');"
+    - name: Setup PHP right now, nyaa~
+      uses: shivammathur/setup-php@v2
+      with:
+        php-version: '7.4'
+    - name: Install Dependencies, UwU~
+      run: composer update
+    - name: Generate key, tehee~
+      run: php artisan key:generate
+    - name: Directory Permissions, please waiittt....
+      run: chmod -R 777 storage bootstrap/cache
+    - name: Zipping the folder, meow~
+      run: for dir in */; do ( zip -r "${dir%/}".zip "$dir" && rm -rf "${dir%/}") done
+    - name: 📂 Sync files
+      uses: SamKirkland/FTP-Deploy-Action@4.3.3
+      with:
+        server: ${{ secrets.LARAVEL_HOSTING_SERVER }}
+        username: ${{ secrets.LARAVEL_HOSTING_USER_FTP }}
+        password: ${{ secrets.LARAVEL_HOSTING_PASS_FTP }}
+        server-dir: /
+        exclude: |
+          **/.git*
+          **/.git*/**
+          .env
+    - name: Connecting to Server via SSH, meow~
+      uses: garygrossgarten/github-action-ssh@release
+      with:
+        command: for dir in swadana/*/; do ( rm -rf "${dir%/}" ) done && for zip in swadana/*.zip; do ( unzip -o "$zip" -d swadana/ && rm -rf "$zip") done && cd swadana/ && composer update && chown -R www-data:www-data ../swadana && find ../swadana -type f -exec chmod 644 {} \; && find ../swadana -type d -exec chmod 755 {} \; && chgrp -R www-data storage bootstrap/cache && chmod -R ug+rwx storage bootstrap/cache && php artisan migrate:refresh --seed && php artisan optimize && php artisan storage:link
+        host: ${{ secrets.LARAVEL_HOSTING_SERVER }}
+        port: 65002
+        username: ${{ secrets.LARAVEL_HOSTING_USER_SSH }}
+        privateKey: ${{ secrets.LARAVEL_HOSTING_PRIVATE_KEY }}
