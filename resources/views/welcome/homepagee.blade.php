@@ -145,7 +145,7 @@
                             <div class="card-content">
                                 <div class="card-title-wrapper">
                                     <h3 class="h3 card-title">
-                                        <a href="{{ route('detail', $item->slug) }}">{{ $item->nama_motor }}</a>
+                                        <a href="{{ route('detailmotor', $item->slug) }}">{{ $item->nama_motor }}</a>
                                     </h3>
 
                                     <data class="year text-uppercase">{{ ucfirst( $item->categories->first()->name) }}</data>
