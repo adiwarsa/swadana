@@ -11,16 +11,12 @@ jobs:
     steps:
     - name: Im getting latest code, Master.
       uses: actions/checkout@v3
-    - name: Copy .env for you~
-      run: php -r "file_exists('.env') || copy('.env.example', '.env');"
     - name: Setup PHP right now, nyaa~
       uses: shivammathur/setup-php@v2
       with:
         php-version: '8.2'
     - name: Install Dependencies, UwU~
       run: composer update
-    - name: Generate key, tehee~
-      run: php artisan key:generate
     - name: Directory Permissions, please waiittt....
       run: chmod -R 777 storage bootstrap/cache
     - name: Zipping the folder, meow~
