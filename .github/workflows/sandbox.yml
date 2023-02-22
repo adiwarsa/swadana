@@ -27,7 +27,7 @@ jobs:
         server: ${{ secrets.LARAVEL_HOSTING_SERVER }}
         username: ${{ secrets.LARAVEL_HOSTING_USER_FTP }}
         password: ${{ secrets.LARAVEL_HOSTING_PASS_FTP }}
-        server-dir: /
+        server-dir: ./swadana/
         exclude: |
           **/.git*
           **/.git*/**
