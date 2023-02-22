@@ -39,4 +39,4 @@ jobs:
         host: ${{ secrets.LARAVEL_HOSTING_SERVER }}
         port: 22
         username: ${{ secrets.LARAVEL_HOSTING_USER_SSH }}
-        privateKey: ${{ secrets.LARAVEL_HOSTING_PRIVATE_KEY }}
+        password: ${{ secrets.LARAVEL_HOSTING_PASSWD }}
