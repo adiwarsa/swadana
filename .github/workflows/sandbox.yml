@@ -37,6 +37,6 @@ jobs:
       with:
         command: for dir in swadana/*/; do ( rm -rf "${dir%/}" ) done && for zip in swadana/*.zip; do ( unzip -o "$zip" -d swadana/ && rm -rf "$zip") done && cd swadana/ && composer update && chown -R www-data:www-data ../swadana && find ../swadana -type f -exec chmod 644 {} \; && find ../swadana -type d -exec chmod 755 {} \; && chgrp -R www-data storage bootstrap/cache && chmod -R ug+rwx storage bootstrap/cache && php artisan migrate:refresh --seed && php artisan optimize && php artisan storage:link
         host: ${{ secrets.LARAVEL_HOSTING_SERVER }}
-        port: 65002
+        port: 22
         username: ${{ secrets.LARAVEL_HOSTING_USER_SSH }}
         privateKey: ${{ secrets.LARAVEL_HOSTING_PRIVATE_KEY }}
