@@ -22,6 +22,10 @@
             <td colspan="2">{{ $data->car->nama_mobil }}</td>
         </tr>
         <tr>
+            <td class="fontBold">Plat</td>
+            <td colspan="2">{{ $data->car->plat }}</td>
+        </tr>
+        <tr>
             <td class="fontBold">Rent Date</td>
             <td colspan="2"> 
                 {{ $data->rent_date }}

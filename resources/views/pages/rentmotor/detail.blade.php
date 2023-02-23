@@ -22,6 +22,10 @@
             <td colspan="2">{{ $data->motor->nama_motor }}</td>
         </tr>
         <tr>
+            <td class="fontBold">Plat</td>
+            <td colspan="2">{{ $data->motor->plat }}</td>
+        </tr>
+        <tr>
             <td class="fontBold">Rent Date</td>
             <td colspan="2"> 
                 {{ $data->rent_date }}

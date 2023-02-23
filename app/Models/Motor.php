@@ -14,6 +14,7 @@ class Motor extends Model
 
     protected $fillable = [
         'nama_motor', 
+        'plat',
         'slug',
         'vendor_id',
         'harga_sewa',

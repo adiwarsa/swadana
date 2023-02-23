@@ -101,8 +101,8 @@
                     <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
                         <i class="material-icons opacity-10 ps-2 pe-2">table_view</i>
                     </div>
-                    <span class="nav-link-text ms-1">Motor</span>
-                    @if ($activePage == 'Edit Motor' || $activePage == 'Motor Table' || $activePage == 'Motor Car' || $activePage == 'Category Motor' || $activePage == 'Vendor Motor')
+                    <span class="nav-link-text ms-1">Motorcycle</span>
+                    @if ($activePage == 'Edit Motor' || $activePage == 'Motor Table' || $activePage == 'Motor Car' || $activePage == 'Category Motor' || $activePage == 'Vendor Motor' || $activePage == 'Add Motor')
                       <span class="nav-link-text ms-1"> > {{ ucfirst($activePage) }}</span>
                     @endif
                 </div>
@@ -159,7 +159,7 @@
                     <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
                         <i class="material-icons opacity-10 ps-2 pe-2">receipt_long</i>
                     </div>
-                    <span class="nav-link-text ms-1">Rent Motor</span>
+                    <span class="nav-link-text ms-1">Rent Motorcycle</span>
                 </a>
             </li>
             <li class="nav-item mt-3">
@@ -180,7 +180,7 @@
                     <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
                         <i class="material-icons opacity-10 ps-2 pe-2">receipt_long</i>
                     </div>
-                    <span class="nav-link-text ms-1">Samsat Motor</span>
+                    <span class="nav-link-text ms-1">Samsat Motorcycle</span>
                 </a>
             </li>
             <li class="nav-item mt-3">
@@ -201,7 +201,7 @@
                     <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
                         <i class="material-icons opacity-10 ps-2 pe-2">motorcycle</i>
                     </div>
-                    <span class="nav-link-text ms-1">Monitoring Motor</span>
+                    <span class="nav-link-text ms-1">Monitoring Motorcycle</span>
                 </a>
             </li>
             <li class="nav-item mt-3">
@@ -294,7 +294,7 @@
                     <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
                         <i class="material-icons opacity-10 ps-2 pe-2">receipt_long</i>
                     </div>
-                    <span class="nav-link-text ms-1">Rent Motor</span>
+                    <span class="nav-link-text ms-1">Rent Motorcycle</span>
                 </a>
             </li>
             <li class="nav-item mt-3">
@@ -315,7 +315,7 @@
                     <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
                         <i class="material-icons opacity-10 ps-2 pe-2">receipt_long</i>
                     </div>
-                    <span class="nav-link-text ms-1">Samsat Motor</span>
+                    <span class="nav-link-text ms-1">Samsat Motorcycle</span>
                 </a>
             </li>
             <li class="nav-item mt-3">
@@ -336,7 +336,7 @@
                     <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
                         <i class="material-icons opacity-10 ps-2 pe-2">motorcycle</i>
                     </div>
-                    <span class="nav-link-text ms-1">Monitoring Motor</span>
+                    <span class="nav-link-text ms-1">Monitoring Motorcycle</span>
                 </a>
             </li>
                 @endif

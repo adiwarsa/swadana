@@ -55,6 +55,9 @@
                                                 Motorcycle Name</th>
                                             <th
                                                 class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
+                                                Plat</th>
+                                            <th
+                                                class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
                                                 Vendor Name</th>
                                             <th
                                                 class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
@@ -90,6 +93,9 @@
                                             </td>
                                             <td>
                                                 <p class="text-xs font-weight-bold mb-0">{{ $item->nama_motor }}</p>
+                                            </td>
+                                            <td>
+                                                <p class="text-xs font-weight-bold mb-0">{{ $item->plat }}</p>
                                             </td>
                                             <td>
                                                 <p class="text-xs font-weight-bold mb-0">{{ $item->vendors->name }}</p>

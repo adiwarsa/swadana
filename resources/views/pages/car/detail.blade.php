@@ -6,6 +6,10 @@
             <td>{{ $data->nama_mobil }}</td>
         </tr>
         <tr>
+            <td class="fontBold">Plat</td>
+            <td>{{ $data->plat }}</td>
+        </tr>
+        <tr>
             <td class="fontBold">Vendor Name</td>
             <td> 
             {{ $data->vendors->name }}

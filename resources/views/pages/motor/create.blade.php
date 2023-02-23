@@ -11,7 +11,7 @@
     <x-navbars.sidebar activePage="Add Motor"></x-navbars.sidebar>
     <main class="main-content position-relative max-height-vh-100 h-100 border-radius-lg ">
         <!-- Navbar -->
-        <x-navbars.navs.auth titlePage="Add Motor" Pages="Vehicle"></x-navbars.navs.auth>
+        <x-navbars.navs.auth titlePage="Add Motorcycle" Pages="Vehicle"></x-navbars.navs.auth>
         <!-- End Navbar -->
             @if ($errors->any())
             <div class="alert alert-danger alert-dismissible text-white">
@@ -23,17 +23,21 @@
             @endif
             <div class="card">
                 <div class="card-header">
-                    Form Add Motor
+                    Form Add Motorcycle
                 </div>
                 <div class="card-body">
                     <form action="{{ route('motor-add') }}" method="post" enctype="multipart/form-data">
                         @csrf
                     <div class="row mt-2">
-                        <div class="mb-3 col-md-6">
+                        <div class="mb-3 col-md-4">
                             <label for="nama_motor">Name Motor</label>
                             <input type="text" name="nama_motor" class="form-control border border-2 p-2" value="{{ old('nama_motor') }}">
                         </div>
-                        <div class="mb-3 col-md-6">
+                        <div class="mb-3 col-md-4">
+                            <label for="nama_mobil">Plat</label>
+                            <input type="text" name="plat" class="form-control border border-2 p-2" value="{{ old('plat') }}">
+                        </div>
+                        <div class="mb-3 col-md-4">
                             <label for="vendor_id">Vendor</label>
                             <select name="vendor_id" id="vendor_id" class="form-control border border-2 p-2">
                                 @foreach ($vendor as $item)

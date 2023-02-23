@@ -137,7 +137,7 @@
                                             </td>
                                             <td>
                                                 @if (empty($item->actual_return_date) && $item->status == 1)
-                                                    <a href="javascript:void(0)" class="btn-edit badge badge-sm bg-gradient-success" data-attr="{{ route('rentcar-return', $item->id) }}">Return</a>
+                                                    <a href="javascript:void(0)" class="btn-return badge badge-sm bg-gradient-success" data-attr="{{ route('rentcar-return', $item->id) }}">Return</a>
                                                 @else
                                                     <p class="text-xs font-weight-bold mb-0">{{ $item->actual_return_date }}</p>
                                                 @endif
@@ -203,10 +203,22 @@
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
                 <div class="modal-header d-flex align-items-center">
-                    <h5 class="modal-title" id="exampleModalLabel">Return Car</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">Edit Rent Car</h5>
                     <button type="button" class="btn btn-close" data-bs-dismiss="modal" aria-label="Close"><i class="fa fa-close"></i></button>
                 </div>
                 <div class="edit-form"></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="editModalr" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header d-flex align-items-center">
+                    <h5 class="modal-title" id="exampleModalLabel">Return Car</h5>
+                    <button type="button" class="btn btn-close" data-bs-dismiss="modal" aria-label="Close"><i class="fa fa-close"></i></button>
+                </div>
+                <div class="edit-return"></div>
             </div>
         </div>
     </div>
@@ -248,61 +260,64 @@ if (startDate && endDate) {
 
 // update the print button configuration with the new title
 $(document).ready(function() {
-    $('#tablerent').DataTable( {
-        lengthMenu: [[10, 25, 50, -1], [10, 25, 50, "All"]],
-        drawCallback: function() {
-        const pageLength = this.fnSettings()._iDisplayLength;
-        const showHideText = pageLength === -1 ? "Hide" : "Show";
-        $(".show-hide").text(`${showHideText} ${pageLength}`);
-        },
-        dom: 'Bfrtip',
-        buttons: [
-            {
-                extend: 'print',
-                text: 'Print',
-                title: title,
-                customize: function ( win ) {
-                    $(win.document.body)
-                        .find('table')
-                        .find('th:last-child, td:last-child')
-                        .remove();
-                    $(win.document.body)
-                        .find('table')
-                        .after('<div id="print-footer">Gianyar, ' + new Date().toLocaleDateString('id-ID', {day: 'numeric', month: 'long', year: 'numeric'}) + '<br>Owner <hr>Nyoman Suwendra</div>');
-                    $(win.document.body)
-                        .find('#print-footer')
-                        .css({
-                            'text-align': 'center',
-                            'position': 'absolute',
-                            'font-size': '15px',
-                            'margin-top': '10px',
-                            'margin-left': 'auto',
-                            'margin-right': '0',
-                            'padding': '10px',
-                            'right' : '0'
-                    });
-
-                    $(win.document.body)
-                        .find('h1')
-                        .css('text-align', 'center');
-                    
-                        if (startDate && endDate) {
-                    win.document.title = `Rent Car Transaction (${startDate} - ${endDate})`;
-                } if(startDate){
-                    win.document.title = `Rent Car Transaction (${startDate})`;
-                }else {
-                    win.document.title = 'Rent Car Transaction';
-                }
-                }
-            },
-            {
-                extend: 'pageLength',
-                text: 'Show',
-                titleAttr: 'Show/Hide Rows',
-                className: 'show-hide'
-            }]
-        } );
-        } );
+  $('#tablerent').DataTable({
+    lengthMenu: [[10, 25, 50, -1], [10, 25, 50, "All"]],
+    drawCallback: function() {
+      const pageLength = this.fnSettings()._iDisplayLength;
+      const showHideText = pageLength === -1 ? "Hide" : "Show";
+      $(".show-hide").text(`${showHideText} ${pageLength}`);
+    },
+    dom: 'Bfrtip',
+    buttons: [
+      {
+        extend: 'print',
+        text: 'Print',
+        title: title,
+        customize: function (win) {
+          $(win.document.body)
+            .find('table')
+            .find('th:last-child, td:last-child')
+            .remove();
+          $(win.document.body)
+            .find('table')
+            .after('<div id="print-footer">Gianyar, ' + new Date().toLocaleDateString('id-ID', {day: 'numeric', month: 'long', year: 'numeric'}) + '<br>Owner <hr>Nyoman Suwendra</div>');
+          $(win.document.body)
+            .find('#print-footer')
+            .css({
+              'text-align': 'center',
+              'position': 'absolute',
+              'font-size': '15px',
+              'margin-top': '10px',
+              'margin-left': 'auto',
+              'margin-right': '0',
+              'padding': '10px',
+              'right' : '0'
+            });
+          $(win.document.body)
+            .find('h1')
+            .css('text-align', 'center');
+          // Add logo to top left
+          $(win.document.body)
+            .find('h1')
+            .before('<img src="{{ asset('assets') }}/img/logos/b.png" style="position:absolute;top:0;left:10px;height:100px;">');
+          if (startDate && endDate) {
+            win.document.title = `Rent Car Transaction (${startDate} - ${endDate})`;
+          } if(startDate){
+            win.document.title = `Rent Car Transaction (${startDate})`;
+          }else {
+            win.document.title = 'Rent Car Transaction';
+          }
+        }
+      },
+      {
+        extend: 'pageLength',
+        text: 'Show',
+        titleAttr: 'Show/Hide Rows',
+        className: 'show-hide'
+      }
+    ]
+  });
+});
 
     //Invoice Rent Print
     function printInvoice(id) {

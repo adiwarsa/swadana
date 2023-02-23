@@ -23,17 +23,21 @@
             @endif
             <div class="card">
                 <div class="card-header">
-                    Form Add Mobil
+                    Form Add Car
                 </div>
                 <div class="card-body">
                     <form action="{{ route('car-add') }}" method="post" enctype="multipart/form-data">
                         @csrf
-                    <div class="row mt-2">
-                        <div class="mb-3 col-md-6">
+                    <div class="row mt-3">
+                        <div class="mb-3 col-md-4">
                             <label for="nama_mobil">Name Car</label>
                             <input type="text" name="nama_mobil" class="form-control border border-2 p-2" value="{{ old('nama_mobil') }}">
                         </div>
-                        <div class="mb-3 col-md-6">
+                        <div class="mb-3 col-md-4">
+                            <label for="nama_mobil">Plat</label>
+                            <input type="text" name="plat" class="form-control border border-2 p-2" value="{{ old('plat') }}">
+                        </div>
+                        <div class="mb-3 col-md-4">
                             <label for="vendor_id">Vendor</label>
                             <select name="vendor_id" id="vendor_id" class="form-control border border-2 p-2">
                                 @foreach ($vendor as $item)

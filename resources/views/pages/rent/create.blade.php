@@ -40,7 +40,7 @@
                             <select name="car_id" id="car" class="form-control border border-2 p-2 boxselect">
                                 <option value="">Select Car</option>
                                 @foreach ($cars as $item)
-                                    <option value="{{$item->id}}">{{$item->nama_mobil}}</option>
+                                    <option value="{{$item->id}}">{{$item->nama_mobil}} || Plat :{{ $item->plat }} || Sewa : Rp. {{$item->harga_sewa}} || Denda : Rp. {{$item->denda}}</option>
                                 @endforeach
                             </select>
                         </div>

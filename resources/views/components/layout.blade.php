@@ -168,6 +168,19 @@
   })
 });
 
+$(document).on('click', '.btn-return', function(event) {
+  event.preventDefault();
+  let href = $(this).attr('data-attr');
+  $.ajax({
+      url: href,
+      success: function(response) {
+        $('#editModalr').modal("show");
+          $('.edit-return').html('');
+          $('.edit-return').append(response);
+      }
+  })
+});
+
 //show password
     $("body").on('click', '.toggle-password', function() {
         $(this).toggleClass("psw");

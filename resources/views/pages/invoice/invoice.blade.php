@@ -35,6 +35,18 @@
 			body a {
 				color: #06f;
 			}
+			.paid-stamp {
+			position: absolute;
+			top: 3px;
+			right: 15px;
+			padding: 5px;
+			font-size: 16px;
+			line-height: 24px;
+			font-family: 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif;
+			color: #555;
+			font-weight: bold;
+			text-transform: uppercase;
+		}
 
 			.invoice-box {
 				max-width: 800px;
@@ -119,6 +131,12 @@
 
 	<body>
 		<div class="invoice-box">
+			<div class="paid-stamp">@if($data->status != '0')
+			<a style="color:green">PAID</a>
+			@else
+			<a style="color:red">UNPAID</a>
+			@endif
+		</div>
 			<table>
 				<tr class="top">
 					<td colspan="2">
@@ -195,7 +213,7 @@
 					@endif
 				</tr>
 
-				<tr class="item last">
+				{{-- <tr class="item last">
 					<td>Fine ({{ $daysfine }} days)</td>
 
 					<td>
@@ -205,15 +223,16 @@
                         Rp {{ number_format($data->fine, 0, ',', '.') }}
                         @endif
                     </td>
-				</tr>
+				</tr> --}}
 
 				<tr class="total">
 					<td></td>
 
-					<td>Total: Rp {{ number_format($total, 0, ',', '.') }}</td>
+					<td>Total: Rp {{ number_format($data->pay, 0, ',', '.') }}</td>
 				</tr>
 			</table>
 		</div>
+		
 	</body>
 </html>
 

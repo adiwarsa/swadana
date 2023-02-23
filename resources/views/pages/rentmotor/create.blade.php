@@ -40,7 +40,7 @@
                             <select name="motor_id" id="motor" class="form-control border border-2 p-2 boxselect">
                                 <option value="">Select Motor</option>
                                 @foreach ($motors as $item)
-                                    <option value="{{$item->id}}">{{$item->nama_motor}}</option>
+                                    <option value="{{$item->id}}">{{$item->nama_motor}} || Plat :{{ $item->plat }} || Sewa : Rp. {{$item->harga_sewa}} || Denda : Rp. {{$item->denda}}</option>
                                 @endforeach
                             </select>
                         </div>
