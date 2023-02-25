@@ -114,7 +114,7 @@
                               <input required type="date" class="form-control border border-2 p-2" id="rent_start_date" name="rent_date">
                           </div>
                           <div class="mb-3 col-md-6">
-                              <label class="form-label">Until</label>
+                              <label class="form-label">Return Date</label>
                               <input type="date" class="form-control border border-2 p-2" id="rent_end_date" name="return_date">
                           </div>
                       </div>

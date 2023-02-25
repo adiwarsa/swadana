@@ -4,14 +4,6 @@
         <!-- Navbar -->
         <x-navbars.navs.auth titlePage="Add User" Pages="User"></x-navbars.navs.auth>
         <!-- End Navbar -->
-            @if ($errors->any())
-            <div class="alert alert-danger alert-dismissible text-white">
-                <span class="text-sm">Data sudah ada!</span>
-                <button type="button" class="btn-close text-lg py-3 opacity-10" data-bs-dismiss="alert" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            @endif
             <div class="card">
                 <div class="card-header">
                     Form Add User
@@ -19,6 +11,9 @@
                 <div class="card-body">
                     <form action="{{ route('user-add') }}" method="post" enctype="multipart/form-data">
                         @csrf
+                        @error('username')
+                        <p class='text-danger inputerror'>{{ $message }} </p>
+                        @enderror
                         <div class="form-group">
                             <label for="nama_mobil">Username</label>
                             <input type="text" name="username" class="form-control border border-2 p-2" value="{{ old('username') }}">

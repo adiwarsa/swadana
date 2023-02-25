@@ -272,7 +272,6 @@ $(document).ready(function() {
       {
         extend: 'print',
         text: 'Print',
-        title: title,
         customize: function (win) {
           $(win.document.body)
             .find('table')
@@ -295,18 +294,18 @@ $(document).ready(function() {
             });
           $(win.document.body)
             .find('h1')
-            .css('text-align', 'center');
-          // Add logo to top left
+            .css('display', 'none');
+          // Add header title
           $(win.document.body)
-            .find('h1')
-            .before('<img src="{{ asset('assets') }}/img/logos/b.png" style="position:absolute;top:0;left:10px;height:100px;">');
-          if (startDate && endDate) {
-            win.document.title = `Rent Car Transaction (${startDate} - ${endDate})`;
-          } if(startDate){
-            win.document.title = `Rent Car Transaction (${startDate})`;
-          }else {
-            win.document.title = 'Rent Car Transaction';
-          }
+            .prepend('<div style="text-align: center;">'+
+                      '<img src="{{ asset('assets') }}/img/logos/b.png" height="80px" style="position: absolute; top: 50px; left: 50px;">'+
+                      '<h1 style="text-align:center;margin-top: 70px;">Swadana Bali</h1>'+
+                      '<div style="margin-top: 10px; text-align: center;">'+
+                        '<p>Jl. Cempaka, Mas, Ubud, Gianyar, Bali<br>'+
+                        'Telp. +62 81 238 626 20 | Email: info@swadanabalirentcar.com</p>'+
+                        '<h4>'+ (startDate && endDate ? 'Rent Car Transaction <br> (' + startDate + ' - ' + endDate + ')' : (startDate ? 'Rent Car Transaction <br> (' + startDate + ')' : 'Rent Car Transaction')) + '<h4>'+
+                      '</div>'+
+                    '</div>');
         }
       },
       {
