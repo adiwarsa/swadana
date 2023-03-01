@@ -31,11 +31,11 @@
                     <div class="row mt-3">
                         <div class="mb-3 col-md-4">
                             <label for="nama_mobil">Name Car</label>
-                            <input type="text" name="nama_mobil" class="form-control border border-2 p-2" value="{{ old('nama_mobil') }}">
+                            <input type="text" name="nama_mobil" class="form-control border border-2 p-2" value="{{ old('nama_mobil') }}" required>
                         </div>
                         <div class="mb-3 col-md-4">
                             <label for="nama_mobil">Plat</label>
-                            <input type="text" name="plat" class="form-control border border-2 p-2" value="{{ old('plat') }}">
+                            <input type="text" name="plat" class="form-control border border-2 p-2" value="{{ old('plat') }}" required>
                         </div>
                         <div class="mb-3 col-md-4">
                             <label for="vendor_id">Vendor</label>
@@ -49,11 +49,11 @@
                     <div class="row mt-2">
                         <div class="mb-3 col-md-6">
                             <label for="harga_sewa">Price Rent</label>
-                            <input type="number" name="harga_sewa" class="form-control border border-2 p-2" value="{{ old('harga_sewa') }}">
+                            <input type="number" name="harga_sewa" class="form-control border border-2 p-2" value="{{ old('harga_sewa') }}" required>
                         </div>
                         <div class="mb-3 col-md-6">
                             <label for="denda">Fine</label>
-                            <input type="number" name="denda" class="form-control border border-2 p-2" value="{{ old('denda') }}">
+                            <input type="number" name="denda" class="form-control border border-2 p-2" value="{{ old('denda') }}" required>
                         </div>
                     </div>
                     <div class="row mt-2">
@@ -63,13 +63,13 @@
                           </div>
                         <div class="mb-3 col-md-6">
                             <label for="bahan_bakar">Fuel</label>
-                            <input type="text" name="bahan_bakar" class="form-control border border-2 p-2" value="{{ old('bahan_bakar') }}">
+                            <input type="text" name="bahan_bakar" class="form-control border border-2 p-2" value="{{ old('bahan_bakar') }}" required>
                         </div>
                     </div>
                     <div class="row mt-2">
                         <div class="mb-3 col-md-6">
                             <label for="jumlah_kursi">Seat</label>
-                            <input type="number" name="jumlah_kursi" class="form-control border border-2 p-2" value="{{ old('jumlah_kursi') }}">
+                            <input type="number" name="jumlah_kursi" class="form-control border border-2 p-2" value="{{ old('jumlah_kursi') }}" required>
                         </div>
                         <div class="mb-3 col-md-6">
                             <label for="transmisi">Transmision</label>
@@ -102,10 +102,10 @@
                         </div>
                         <div class="form-group">
                             <label for="image">Image</label>
-                            <input type="file" class="form-control border border-2 p-2" name="image">
+                            <input type="file" class="form-control border border-2 p-2" name="image" required>
                         </div>
                         <div class="form-group">
-                            <button type="submit" class="btn btn-primary">Simpan</button>
+                            <button type="submit" class="btn btn-primary mt-2">Simpan</button>
                         </div>
                     </form>
                 </div>

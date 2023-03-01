@@ -14,13 +14,13 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        $categories = Category::where('type', '1')->get();
+        $categories = Category::where('type', '1')->orderBy('created_at', 'DESC')->get();
         return view('pages.category.category', ['categories' => $categories]);
     }
 
     public function motorindex()
     {
-        $categories = Category::where('type', '2')->get();
+        $categories = Category::where('type', '2')->orderBy('created_at', 'DESC')->get();
         return view('pages.category.categorymotor', ['categories' => $categories]);
     }
 
@@ -118,6 +118,6 @@ class CategoryController extends Controller
     {
         $categories = Category::where('slug', $slug)->first();
         $categories->delete();
-        return redirect('category')->with('success', 'Category successfully deleted');
+        return redirect()->back()->with('success', 'Category successfully deleted');
     }
 }

@@ -20,7 +20,7 @@ class MotorController extends Controller
      */
     public function index()
     {
-        $motor = Motor::with('vendors')->get();
+        $motor = Motor::with('vendors')->orderBy('status')->get();
         return view('pages.motor.motor', ['motor' => $motor]);
     }
 

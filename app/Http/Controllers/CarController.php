@@ -19,7 +19,7 @@ class CarController extends Controller
      */
     public function index()
     {
-        $car = Car::with('vendors')->get();
+        $car = Car::with('vendors')->orderBy('status')->get();
         return view('pages.car.car', ['car' => $car]);
     }
 

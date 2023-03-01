@@ -28,7 +28,7 @@
                         <div class="row mt-2">
                         <div class="mb-3 col-md-6">
                             <label for="user">Customer</label>
-                            <select name="user_id" id="user" class="form-control border border-2 p-2 boxselect">
+                            <select required name="user_id" id="user" class="form-control border border-2 p-2 boxselect">
                                 <option value="">Select Customer</option>
                                 @foreach ($users as $item)
                                     <option value="{{$item->id}}">{{$item->username}}</option>
@@ -37,7 +37,7 @@
                         </div>
                         <div class="mb-3 col-md-6">
                             <label for="motor">Motor</label>
-                            <select name="motor_id" id="motor" class="form-control border border-2 p-2 boxselect">
+                            <select required name="motor_id" id="motor" class="form-control border border-2 p-2 boxselect">
                                 <option value="">Select Motor</option>
                                 @foreach ($motors as $item)
                                     <option value="{{$item->id}}">{{$item->nama_motor}} || Plat :{{ $item->plat }} || Sewa : Rp. {{$item->harga_sewa}} || Denda : Rp. {{$item->denda}}</option>
@@ -53,12 +53,12 @@
                         <div class="row mt-2">
                             <div class="mb-3 col-md-6">
                                 <label class="form-label">Rent Date</label>
-                                <input required type="date" class="form-control border border-2 p-2" id="rent_date" name="rent_date">
+                                <input required type="date" class="form-control border border-2 p-2" id="rent_date" name="rent_date" required>
                             </div>
                             
                             <div class="mb-3 col-md-6">
                                 <label class="form-label">Until</label>
-                                <input type="date" class="form-control border border-2 p-2" id="return_date" name="return_date">
+                                <input type="date" class="form-control border border-2 p-2" id="return_date" name="return_date" required>
                             </div>
                         </div>
                         <div class="form-group">

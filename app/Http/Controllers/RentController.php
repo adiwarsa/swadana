@@ -27,11 +27,11 @@ class RentController extends Controller
 
         if ($start_date && $end_date) {
             $end_date = Carbon::parse($end_date)->addDays(1);
-            $rentlogs = RentLogs::whereNotNull('car_id')->whereBetween('created_at', [$start_date, $end_date])->get();
+            $rentlogs = RentLogs::whereNotNull('car_id')->whereBetween('created_at', [$start_date, $end_date])->orderBy('created_at', 'DESC')->get();
         } else if ($start_date) {
-            $rentlogs = RentLogs::whereNotNull('car_id')->whereDate('created_at', $start_date)->get();
+            $rentlogs = RentLogs::whereNotNull('car_id')->whereDate('created_at', $start_date)->orderBy('created_at', 'DESC')->get();
         } else {
-            $rentlogs = RentLogs::whereNotNull('car_id')->get();
+            $rentlogs = RentLogs::whereNotNull('car_id')->orderBy('created_at', 'DESC')->get();
         }
 
         return view('pages.rent.rentcar', ['rent_logs' => $rentlogs]);
@@ -86,11 +86,11 @@ class RentController extends Controller
 
         if ($start_date && $end_date) {
             $end_date = Carbon::parse($end_date)->addDays(1);
-            $rentlogs = RentLogs::whereNotNull('motor_id')->whereBetween('created_at', [$start_date, $end_date])->get();
+            $rentlogs = RentLogs::whereNotNull('motor_id')->whereBetween('created_at', [$start_date, $end_date])->orderBy('created_at', 'DESC')->get();
         } else if ($start_date) {
-            $rentlogs = RentLogs::whereNotNull('motor_id')->whereDate('created_at', $start_date)->get();
+            $rentlogs = RentLogs::whereNotNull('motor_id')->whereDate('created_at', $start_date)->orderBy('created_at', 'DESC')->get();
         } else {
-            $rentlogs = RentLogs::whereNotNull('motor_id')->get();
+            $rentlogs = RentLogs::whereNotNull('motor_id')->orderBy('created_at', 'DESC')->get();
         }
 
         return view('pages.rentmotor.rentmotor', ['rent_logs' => $rentlogs]);

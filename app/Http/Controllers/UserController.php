@@ -18,7 +18,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        $user = User::where('role_id','>', 1)->get();
+        $user = User::where('role_id','>', 1)->orderBy('created_at', 'DESC')->get();
         return view('pages.user.user-management', ['users' => $user]);
     }
 

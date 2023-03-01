@@ -25,7 +25,7 @@ class SessionsController extends Controller
 
         if (! auth()->attempt($attributes)) {
             throw ValidationException::withMessages([
-                'email' => 'Your provided credentials could not be verified.'
+                'email' => 'You submit a wrong email or password',
             ]);
         }
         if(auth()->user()->status != 'active'){

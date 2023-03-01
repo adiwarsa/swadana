@@ -117,7 +117,7 @@ class VendorController extends Controller
     {
         $vendor = Vendor::where('slug', $slug)->first();
         $vendor->delete();
-        return redirect('vendors')->with('success', 'Vendor successfully deleted');
+        return redirect()->back()->with('success', 'Vendor successfully deleted');
 
     }
 }

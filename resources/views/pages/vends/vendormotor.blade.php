@@ -68,7 +68,14 @@
                                             </td>
                                             <td class="align-middle text-center text-sm">
                                                 <a href="javascript:void(0)" class="btn-edit badge badge-sm bg-gradient-success" data-attr="{{ route('vendor-edit', $item->slug) }}">Edit</a>
-                                                <a href="vendor-delete/{{ $item->slug }}" class="badge badge-sm bg-gradient-secondary">Delete</a>
+                                                <form class="delform" method="POST" action="{{ route('vendor-delete', $item->slug) }}">
+                                                    @csrf
+                                                    @method('DELETE')
+                                                    <a type="submit" class="badge badge-sm bg-gradient-secondary"
+                                                        onclick="event.preventDefault(); confirmDelete(this);">
+                                                        Delete
+                                                    </a>
+                                                </form>
                                             </td>
                                         </tr>
                                         @endforeach

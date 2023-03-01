@@ -29,7 +29,7 @@
                                             <div class="input-group input-group-outline mt-3">
                                                 <label class="form-label">Name</label>
                                                 <input type="text" class="form-control" name="username"
-                                                    value="{{ old('username') }}">
+                                                    value="{{ old('username') }}" required>
                                             </div>
                                             @error('username')
                                             <p class='text-danger inputerror'>{{ $message }} </p>
@@ -37,7 +37,7 @@
                                             <div class="input-group input-group-outline mt-3">
                                                 <label class="form-label">Email</label>
                                                 <input type="email" class="form-control" name="email"
-                                                    value="{{ old('email') }}">
+                                                    value="{{ old('email') }}" required>
                                             </div>
                                             @error('email')
                                             <p class='text-danger inputerror'>{{ $message }} </p>
@@ -45,7 +45,7 @@
                                             <div class="input-group input-group-outline mt-3">
                                                 <label class="form-label">Phone</label>
                                                 <input type="text" class="form-control" name="phone"
-                                                    value="{{ old('phone') }}">
+                                                    value="{{ old('phone') }}" required>
                                             </div>
                                             @error('phone')
                                             <p class='text-danger inputerror'>{{ $message }} </p>
@@ -53,14 +53,14 @@
                                             <div class="input-group input-group-outline mt-3">
                                                 <label class="form-label">Address</label>
                                                 <input type="text" class="form-control" name="address"
-                                                    value="{{ old('address') }}">
+                                                    value="{{ old('address') }}" required>
                                             </div>
                                             @error('address')
                                             <p class='text-danger inputerror'>{{ $message }} </p>
                                             @enderror
                                             <div class="input-group input-group-outline mt-3">
                                                 <label class="form-label">Password</label>
-                                                <input type="password" class="form-control" name="password">
+                                                <input type="password" class="form-control" name="password" required>
                                             </div>
                                             @error('password')
                                             <p class='text-danger inputerror'>{{ $message }} </p>

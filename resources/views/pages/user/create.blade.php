@@ -16,26 +16,26 @@
                         @enderror
                         <div class="form-group">
                             <label for="nama_mobil">Username</label>
-                            <input type="text" name="username" class="form-control border border-2 p-2" value="{{ old('username') }}">
+                            <input type="text" name="username" class="form-control border border-2 p-2" value="{{ old('username') }}" required>
                         </div>
                     <div class="row mt-2">
                         <div class="mb-3 col-md-6">
                             <label for="email">Email</label>
-                            <input type="text" name="email" class="form-control border border-2 p-2" value="{{ old('email') }}">
+                            <input type="text" name="email" class="form-control border border-2 p-2" value="{{ old('email') }}" required>
                         </div>
                         <div class="mb-3 col-md-6">
                             <label for="password">Password</label>
-                            <input type="password" name="password" class="form-control border border-2 p-2" value="">
+                            <input type="password" name="password" class="form-control border border-2 p-2" value="" required>
                         </div>
                     </div>
                     <div class="row mt-2">
                         <div class="mb-3 col-md-6">
                             <label for="phone">Phone</label>
-                            <input type="text" name="phone" class="form-control border border-2 p-2" value="">
+                            <input type="text" name="phone" class="form-control border border-2 p-2" value="{{ old('phone') }}" required>
                         </div>
                         <div class="mb-3 col-md-6">
                             <label for="address">Address</label>
-                            <input type="text" name="address" class="form-control border border-2 p-2" value="">
+                            <input type="text" name="address" class="form-control border border-2 p-2" value="{{ old('address') }}" required>
                         </div>
                     </div>
                     <div class="row mt-2">
