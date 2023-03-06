@@ -9,7 +9,8 @@
   <title>Swadana - Rent your favourite car</title>
 
   {{-- favicon --}}
-  <link rel="shortcut icon" href="{{ asset('landingpage/favicon.svg') }}" type="image/svg+xml">
+  <link rel="apple-touch-icon" sizes="76x76" href="{{ asset('assets') }}/img/apple-icon.png">
+  <link rel="icon" type="image/png" href="{{ asset('assets') }}/img/favicon.png">
 
 
   {{-- custom css link --}}

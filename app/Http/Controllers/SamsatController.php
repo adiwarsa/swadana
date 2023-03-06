@@ -17,7 +17,7 @@ class SamsatController extends Controller
      */
     public function index()
     {
-        $car = Car::where('samsat', '<=', Carbon::now()->addDays(15))
+        $car = Car::where('samsat', '<=', Carbon::now()->addDays(30))
                 ->where('remind', '=', '0')
                 ->get();
         $samsat = Samsat::whereNotNull('car_id')->orderBy('created_at', 'DESC')->get();
@@ -26,7 +26,7 @@ class SamsatController extends Controller
 
     public function indexmotor()
     {
-        $motor = Motor::where('samsat', '<=', Carbon::now()->addDays(15))
+        $motor = Motor::where('samsat', '<=', Carbon::now()->addDays(30))
                 ->where('remind', '=', '0')
                 ->get();
         $samsat = Samsat::whereNotNull('motor_id')->orderBy('created_at', 'DESC')->get();

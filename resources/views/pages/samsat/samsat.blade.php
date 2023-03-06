@@ -121,7 +121,6 @@
         </div>
     </main>
 
-    //add modal 
     <!-- Add Modal -->
   <div class="modal fade" id="addnew" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
@@ -151,7 +150,6 @@
     </div>
   </div>
 
-//edit modal
     <div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
@@ -173,7 +171,6 @@
             {
                 extend: 'print',
                 text: 'Print',
-                title: 'Swadana Bali <br> Samsat Car <hr>',
                 customize: function ( win ) {
                     $(win.document.body)
                         .find('table')
@@ -194,12 +191,22 @@
                             'padding': '10px',
                             'right' : '0'
                     });
-
                     $(win.document.body)
-                        .find('h1')
-                        .css('text-align', 'center');
-                }
-            }
+                    .find('h1')
+                    .css('display', 'none');
+                // Add header title
+                    $(win.document.body)
+                    .prepend('<div style="text-align: center;">'+
+                      '<img src="{{ asset('assets') }}/img/logos/b.png" height="80px" style="position: absolute; top: 50px; left: 50px;">'+
+                      '<h1 style="text-align:center;margin-top: 70px;">Swadana Bali</h1>'+
+                      '<div style="margin-top: 10px; text-align: center;">'+
+                        '<p>Jl. Cempaka, Mas, Ubud, Gianyar, Bali<br>'+
+                        'Telp. +62 81 238 626 20 | Email: info@swadanabalirentcar.com</p>'+
+                        '<h4> Samsar Car <h4>'+
+                      '</div>'+
+                    '</div>');
+        }
+      },
         ]
     } );
 } );

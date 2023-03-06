@@ -44,7 +44,7 @@
             
         </tr>
         <tr>
-            <td class="fontBold" style="vertical-align: middle;">Gambar</td>
+            <td class="fontBold" style="vertical-align: middle;">Picture</td>
             <td>
             @if ($data->gambar != '')
                 <img src="{{ asset('storage/profile/'.$data->gambar) }}" alt="" width="250px"> 

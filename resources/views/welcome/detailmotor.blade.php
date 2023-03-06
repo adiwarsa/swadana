@@ -144,6 +144,24 @@
     const rentalPrice = {{ $motor->harga_sewa }};
     const priceGroup = document.getElementById('rental-price-group');
     const priceField = document.getElementById('rent_price');
+    
+    // disable the end date input field initially
+    endDateField.disabled = true;
+
+    // listen for changes in the start date input field
+    startDateField.addEventListener('input', function() {
+    // enable the end date input field if the start date is filled
+    if (startDateField.value !== '') {
+        endDateField.disabled = false;
+    } else {
+        endDateField.disabled = true;
+    }
+    });
+
+    startDateField.addEventListener('change', function() {
+    endDateField.disabled = false;
+    endDateField.min = startDateField.value;
+    });
 
     function updatePriceField() {
       const startDate = startDateField.value;

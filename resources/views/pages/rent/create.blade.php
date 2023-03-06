@@ -79,6 +79,13 @@
         $(document).ready(function() {
             $('.boxselect').select2();
         });
-        </script>
+        const startDateField = document.getElementById('rent_date');
+        const endDateField = document.getElementById('return_date');
+
+        startDateField.addEventListener('change', function() {
+        endDateField.disabled = false;
+        endDateField.min = startDateField.value;
+        });
+    </script>
 
 </x-layout>

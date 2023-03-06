@@ -18,9 +18,11 @@ class DashboardController extends Controller
     {
         $carcount = RentLogs::whereNotNull('car_id')
                     ->whereNull('actual_return_date')
+                    ->where('status', 1)
                     ->count();
         $motorcount = RentLogs::whereNotNull('motor_id')
-                    ->whereNull('actual_return_date')    
+                    ->whereNull('actual_return_date')
+                    ->where('status', 1)    
                     ->count();
         $usercount = User::count();
 
@@ -47,11 +49,10 @@ class DashboardController extends Controller
         $mingguini->settings(['formatFunction' => 'translatedFormat']);
         $now->settings(['formatFunction' => 'translatedFormat']);
         
-        // Define an array of days of the week in the order you want to display them.
+        // Menentukan hari dalam seminggu yang ingin ditampilkan
         $days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
 
-        // Create an array with 7 elements and fill it with zeros.
-        // This array will hold the count of rent logs for each day of the week.
+        // membuat 7 array elemen dan mengisi dengan 0
         $counts = array_fill(0, 7, 0);
 
         // Query the rent logs where the `car_id` column is not null, and where the `created_at` column is between the start and end of the current week.

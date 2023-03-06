@@ -92,6 +92,10 @@
                                                             @endforeach
                                                         </li>
 
+                                                        <li class="card-list-item">
+                                                            <span class="card-item-text">Plat : {{ $item->car->plat }}</span>
+                                                        </li>
+
                                                     </ul>
 
                                                     <div class="card-price-wrapper">

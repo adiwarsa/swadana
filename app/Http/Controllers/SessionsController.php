@@ -42,11 +42,12 @@ class SessionsController extends Controller
             return redirect('/dashboard')->with('success', 'Login success !');
         }
         if(auth()->user()->role_id == 2){
-            return redirect('/dashboard')->with('success', 'Login success !');
+            return redirect('/rentcar')->with('success', 'Login success !');
         }
         if(auth()->user()->role_id == 3){
             return redirect('/');
         }
+        
         
         return redirect('/dashboard')->with('success', 'Login success !');
     }

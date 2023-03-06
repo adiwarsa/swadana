@@ -167,7 +167,7 @@
                                                     </form>
                                                 @endif
                                             @else
-                                            <button class="btn badge badge-sm bg-gradient-success">Car Returned</button>
+                                            <a class="btn badge badge-sm bg-gradient-success">Car Returned</a>
                                             @endif
                                                 {{-- <p class="text-xs font-weight-bold mb-0">{{ $item->status }}</p> --}}
                                             </td>
@@ -318,9 +318,9 @@ $(document).ready(function() {
   });
 });
 
-    //Invoice Rent Print
-    function printInvoice(id) {
-    window.location.href = '/rent/' + id + '/print';
+//Invoice Rent Print
+function printInvoice(id) {
+    window.open('/rent/' + id + '/print', '_blank');
 }
 
 </script>

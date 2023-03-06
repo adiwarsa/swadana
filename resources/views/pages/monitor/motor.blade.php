@@ -87,9 +87,13 @@
 
                                                         <li class="card-list-item">
                                                             @foreach ($item->motor->categories as $category)
-                                                                <ion-icon name="hardware-chip-outline"></ion-icon>
+                                                                <ion-icon name="checkmark-circle-outline"></ion-icon>
                                                                 <span class="card-item-text">{{ ucfirst($category->name) }}</span>
                                                             @endforeach
+                                                        </li>
+
+                                                        <li class="card-list-item">
+                                                            <span class="card-item-text">Plat : {{ $item->motor->plat }}</span>
                                                         </li>
 
                                                     </ul>

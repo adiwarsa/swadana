@@ -38,10 +38,10 @@ class DemoCron extends Command
         // // $car = Car::where('samsat', '>=', $limabelas)->first();
         // $car = Car::where(['samsat', '>=', $limabelas,
         // 'remind', "=" , '0'])->first();
-        $car = Car::where('samsat', '<=', Carbon::now()->addDays(15))
+        $car = Car::where('samsat', '<=', Carbon::now()->addDays(30))
                 ->where('remind', '=', '0')
                 ->first();
-        $motor = Motor::where('samsat', '<=', Carbon::now()->addDays(15))
+        $motor = Motor::where('samsat', '<=', Carbon::now()->addDays(30))
         ->where('remind', '=', '0')
         ->first();
         $user = new User();
