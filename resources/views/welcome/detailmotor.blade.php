@@ -75,7 +75,7 @@
                         <!-- Product actions-->
                         <div class="card-footer border-top-0 bg-transparent">
                             <div class="text-center">
-                                @if(!Auth::guest())
+                                @if(Auth::user()->role_id == 3)
                                     @if($motor->status == 'tersedia')
                                 <a class="btn d-flex align-items-center justify-content-center btn-primary mt-auto"
                                     data-bs-toggle="modal" id="rent_add" data-bs-target="#addnew"
@@ -85,9 +85,13 @@
                                     <a>Not Available</a>
                                     @endif
                                 @else
+                                @if(Auth::guest())
                                 <a class="btn d-flex align-items-center justify-content-center btn-primary mt-auto"
                                     href="{{ route('register') }}" style="column-gap: 0.4rem">Rent Motorcycle <i
                                         class="ri-whatsapp-line"></i></a>
+                                        @else
+                                        <a>You can't Rent</a>
+                                        @endif
                                 @endif
                             </div>
                         </div>

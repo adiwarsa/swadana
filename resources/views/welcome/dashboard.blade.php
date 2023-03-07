@@ -54,7 +54,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($data as $item)
+                            @forelse ($data as $item)
                             <tr>
                                 <td>
                                     <p class="text-xs font-weight-bold text-center">{{ $loop->iteration }}</p>
@@ -103,7 +103,13 @@
                                 
                                 </td>
                             </tr>
-                            @endforeach
+                            @empty
+                            <tr>
+                            <td colspan="10" class="align-middle text-center item-center">
+                                You haven't rent any car yet.
+                            </td>
+                            </tr>
+                            @endforelse
                         </tbody>
                     </table>
                 </div>

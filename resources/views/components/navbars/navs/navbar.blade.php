@@ -42,6 +42,7 @@
     @endguest
 
     @auth
+    @if(Auth::user()->role_id == 3)
     <div class="header-actions">
     <form method="POST" action="{{ route('logout') }}" class="d-none" id="logout-form">
         @csrf
@@ -63,15 +64,26 @@
       @csrf
     </form>
   </div>
-
-        {{-- <li class="nav-item d-flex align-items-center">
-            <a href="javascript:;" class="nav-link text-body font-weight-bold px-0">
-                <i class="fa fa-user me-sm-1"></i>
-                <span class="d-sm-inline d-none"
-                    onclick="event.preventDefault();document.getElementById('logout-form').submit();">Sign
-                    Out</span>
-            </a>
-        </li>        --}}
+  @else
+  <div class="header-actions">
+    <form method="POST" action="{{ route('logout') }}" class="d-none" id="logout-form">
+        @csrf
+    </form>
+    <div class="dropdown">
+      <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        Hi, {{ Auth::user()->username }}
+      </button>
+      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+        <a class="dropdown-item" href="{{ route('dashboard') }}">Dashboard</a>
+        <a class="dropdown-item" href="javascript:;" onclick="event.preventDefault();document.getElementById('logout-form').submit();">Logout</a>
+      </div>
+    </div>
+    
+    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+      @csrf
+    </form>
+  </div>
+  @endif
     @endauth
     </div>
   </header>
