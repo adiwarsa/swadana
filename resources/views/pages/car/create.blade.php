@@ -15,7 +15,7 @@
         <!-- End Navbar -->
             @if ($errors->any())
             <div class="alert alert-danger alert-dismissible text-white">
-                <span class="text-sm">Data sudah ada!</span>
+                <span class="text-sm">Data already exists!</span>
                 <button type="button" class="btn-close text-lg py-3 opacity-10" data-bs-dismiss="alert" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
                 </button>
@@ -35,7 +35,7 @@
                         </div>
                         <div class="mb-3 col-md-4">
                             <label for="nama_mobil">Plat</label>
-                            <input type="text" name="plat" class="form-control border border-2 p-2" value="{{ old('plat') }}" required>
+                            <input type="text" name="plat" class="form-control border border-2 p-2" value="{{ old('plat') }}" required autocomplete="off">
                         </div>
                         <div class="mb-3 col-md-4">
                             <label for="vendor_id">Vendor</label>
@@ -47,13 +47,15 @@
                         </div>
                     </div>
                     <div class="row mt-2">
-                        <div class="mb-3 col-md-6">
+                        <div class="col-md-6">
                             <label for="harga_sewa">Price Rent</label>
-                            <input type="number" name="harga_sewa" class="form-control border border-2 p-2" value="{{ old('harga_sewa') }}" required>
+                            <input type="number" id="rupiah" name="harga_sewa" onchange="valueMinus(this.value, 'rupiah')" class="form-control border border-2 p-2" value="{{ old('harga_sewa') }}" required>
+                            <label for="rupiah">*</label>
                         </div>
-                        <div class="mb-3 col-md-6">
+                        <div class="col-md-6">
                             <label for="denda">Fine</label>
-                            <input type="number" name="denda" class="form-control border border-2 p-2" value="{{ old('denda') }}" required>
+                            <input type="number" id="rupiahdenda" name="denda" onchange="valueMinus(this.value, 'rupiahdenda')" class="form-control border border-2 p-2" value="{{ old('denda') }}" required>
+                            <label for="rupiahdenda">*</label>
                         </div>
                     </div>
                     <div class="row mt-2">
@@ -69,7 +71,7 @@
                     <div class="row mt-2">
                         <div class="mb-3 col-md-6">
                             <label for="jumlah_kursi">Seat</label>
-                            <input type="number" name="jumlah_kursi" class="form-control border border-2 p-2" value="{{ old('jumlah_kursi') }}" required>
+                            <input type="number" id="jumlah_kursi" onchange="valueMinus(this.value, 'jumlah_kursi')" name="jumlah_kursi" class="form-control border border-2 p-2" value="{{ old('jumlah_kursi') }}" required>
                         </div>
                         <div class="mb-3 col-md-6">
                             <label for="transmisi">Transmision</label>
@@ -105,7 +107,7 @@
                             <input type="file" class="form-control border border-2 p-2" name="image" required>
                         </div>
                         <div class="form-group">
-                            <button type="submit" class="btn btn-primary mt-2">Simpan</button>
+                            <button type="submit" class="btn btn-primary mt-2">Save</button>
                         </div>
                     </form>
                 </div>
@@ -118,6 +120,24 @@
         $(document).ready(function() {
             $('.select-multiple').select2();
         });
-        </script>
+        
+        //Label Price Rupiah
+        var rupiahInput = document.querySelector('#rupiah');
+        var rupiahLabel = document.querySelector('label[for="rupiah"]');
+
+        rupiahInput.addEventListener('input', function(e) {
+        // Format the input value and update the label text content
+        rupiahLabel.textContent = '*'+ formatRupiah(this.value, 'Rp. ');
+        });
+
+        //Label Denda Rupiah
+        var rupiahdendaInput = document.querySelector('#rupiahdenda');
+        var rupiahdendaLabel = document.querySelector('label[for="rupiahdenda"]');
+
+        rupiahdendaInput.addEventListener('input', function(e) {
+        // Format the input value and update the label text content
+        rupiahdendaLabel.textContent = '*'+ formatRupiah(this.value, 'Rp. ');
+        });
+    </script>
 
 </x-layout>

@@ -155,7 +155,7 @@
         })
 
 
-    $(document).on('click', '.btn-edit', function(event) {
+$(document).on('click', '.btn-edit', function(event) {
   event.preventDefault();
   let href = $(this).attr('data-attr');
   $.ajax({
@@ -202,42 +202,37 @@ function modalDetail(href, title, size) {
         });
     }
 
-    // //filter
-    //     $(document).ready(function() {
-    //         $('#filterBtn').click(function() {
-    //             var start_date = $('#start_date').val();
-    //             var end_date = $('#end_date').val();
+    //no minus
+    function valueMinus(value, id) {
+        if (value < 0) {
+            value = value.toString().replaceAll("-", "");
+        $('#' + id).val(value);
+    }
+ }
 
-    //             $.ajax({
-    //             type: 'GET',
-    //             url: '/rentcar',
-    //             data: {
-    //                 start_date: start_date,
-    //                 end_date: end_date
-    //             },
-    //             success: function(data) {
-    //                 $('#table tbody').empty();
-    //             // Loop through the filtered data and build the rows of the table
-    //             $.each(data, function(index, rentlog) {
-    // // Append a new row to the table for each rent log
-    //                 $('#table tbody').append(`
-    //                 <tr>
-    //                     <td>${rentlog.id}</td>
-    //                     <td>${rentlog.user.username}</td>
-    //                     <td>${rentlog.user.phone}</td>
-    //                     <td>${rentlog.car.nama_mobil}</td>
-    //                     <td>${rentlog.rent_date}</td>
-    //                     <td>${rentlog.return_date}</td>
-    //                     <td>${rentlog.actual_return_date}</td>
-    //                     <td>${rentlog.pay}</td>
-    //                     <td>${rentlog.fine}</td>
-    //                 </tr>
-    //                 `);
-    //             });
-    //                         }
-    //         });
-    //     });
-    //     });
+ //no minus seat
+ function valueseat(value, id) {
+        if (value < 0) {
+            $('#' + id).val(0);
+        }
+    }
+		/* Fungsi formatRupiah */
+		function formatRupiah(angka, prefix){
+			var number_string = angka.replace(/[^,\d]/g, '').toString(),
+			split   		= number_string.split(','),
+			sisa     		= split[0].length % 3,
+			rupiah     		= split[0].substr(0, sisa),
+			ribuan     		= split[0].substr(sisa).match(/\d{3}/gi);
+ 
+			// tambahkan titik jika yang di input sudah menjadi angka ribuan
+			if(ribuan){
+				separator = sisa ? '.' : '';
+				rupiah += separator + ribuan.join('.');
+			}
+ 
+			rupiah = split[1] != undefined ? rupiah + ',' + split[1] : rupiah;
+			return prefix == undefined ? rupiah : (rupiah ? 'Rp. ' + rupiah : '');
+		}
 
 </script>
 <!-- Github buttons -->

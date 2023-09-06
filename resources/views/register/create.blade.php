@@ -44,8 +44,8 @@
                                             @enderror
                                             <div class="input-group input-group-outline mt-3">
                                                 <label class="form-label">Phone</label>
-                                                <input type="text" class="form-control" name="phone"
-                                                    value="{{ old('phone') }}" required>
+                                                <input type="number" class="form-control" id="phone" name="phone"
+                                                onchange="valueMinus(this.value, 'phone')" value="{{ old('phone') }}" required>
                                             </div>
                                             @error('phone')
                                             <p class='text-danger inputerror'>{{ $message }} </p>

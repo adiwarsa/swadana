@@ -6,7 +6,7 @@
         <!-- End Navbar -->
             @if ($errors->any())
             <div class="alert alert-danger alert-dismissible text-white">
-                <span class="text-sm">Data sudah ada!</span>
+                <span class="text-sm">Data already exists!</span>
                 <button type="button" class="btn-close text-lg py-3 opacity-10" data-bs-dismiss="alert" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
                 </button>
@@ -37,7 +37,7 @@
                     <div class="row mt-2">
                         <div class="mb-3 col-md-6">
                             <label for="phone">Phone</label>
-                            <input type="text" name="phone" class="form-control border border-2 p-2" value="{{ $user->phone }}">
+                            <input type="number" id="phone" onchange="valueMinus(this.value, 'phone')" name="phone" class="form-control border border-2 p-2" value="{{ $user->phone }}">
                         </div>
                         <div class="mb-3 col-md-6">
                             <label for="address">Address</label>
@@ -70,7 +70,7 @@
                             @endif
                         </div>
                         <div class="form-group">
-                            <button type="submit" class="btn btn-primary mt-2">Simpan</button>
+                            <button type="submit" class="btn btn-primary mt-2">Save</button>
                         </div>
                     </form>
                 {{-- </div>

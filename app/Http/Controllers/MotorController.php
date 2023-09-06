@@ -8,6 +8,7 @@ use App\Models\Samsat;
 use App\Models\Vendor;
 use Illuminate\Contracts\Session\Session;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session as FacadesSession;
 
 
@@ -20,7 +21,7 @@ class MotorController extends Controller
      */
     public function index()
     {
-        $motor = Motor::with('vendors')->orderBy('status')->get();
+        $motor = Motor::with('vendors')->orderByDesc('id')->orderBy('status')->get();
         return view('pages.motor.motor', ['motor' => $motor]);
     }
 
@@ -147,8 +148,11 @@ class MotorController extends Controller
             // Check if the kode_samsat value already exists
             $existing_samsat = Samsat::where('code_samsat', $code_samsat)->first();
             if ($existing_samsat) {
-            // Return an error message if the kode_samsat value already exists
-            return redirect('dashboard')->with('error', 'Samsat already added for this motor.');
+                if(Auth::check()){
+                    // Return an error message if the kode_samsat value already exists
+                    return redirect('samsatmotor')->with('error', 'Sorry, samsat already added for this motorcycle!');
+                }
+                return redirect('sign-in')->with('error', 'Sorry, samsat already added for this motorcycle!');
             }
 
         // Create a new Samsat model with the car ID, old samsat value, and kode_samsat value
@@ -159,7 +163,7 @@ class MotorController extends Controller
         ]);
 
         if (!auth()->check()) {
-            return redirect('sign-in')->with('success', 'Car samsat succesfully added, please sign in to continue');
+            return redirect('sign-in')->with('success', 'Motor samsat succesfully added, please sign in to continue');
         }
         // Redirect the user with a success message
         return redirect('samsatmotor')->with('success', 'Motor samsat succesfully added.');

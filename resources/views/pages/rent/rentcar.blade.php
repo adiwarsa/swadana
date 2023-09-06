@@ -49,7 +49,7 @@
                         <!-- <button id="download-btn" type="button">Download PDF</button> -->
                         @if ($errors->any())
                         <div class="alert alert-danger alert-dismissible text-white">
-                            <span class="text-sm">Data sudah ada!</span>
+                            <span class="text-sm">Data already exists!</span>
                             <button type="button" class="btn-close text-lg py-3 opacity-10"
                                     data-bs-dismiss="alert" aria-label="Close">
                                     <span aria-hidden="true">&times;</span>
@@ -241,6 +241,11 @@ startDateInput.addEventListener('input', function() {
     endDateInput.disabled = true;
   }
 });
+//disable end date
+startDateInput.addEventListener('change', function() {
+    endDateInput.disabled = false;
+    endDateInput.min = startDateInput.value;
+    });
 
 // get the URL parameters
 const urlParams = new URLSearchParams(window.location.search);
@@ -248,6 +253,7 @@ const urlParams = new URLSearchParams(window.location.search);
 // extract the start_date and end_date parameters
 const startDate = urlParams.get('start_date');
 const endDate = urlParams.get('end_date');
+
 
 // construct the title with the date range
 let title = `Swadana Bali <br> Rent Car Transaction <br>`;

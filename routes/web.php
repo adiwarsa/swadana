@@ -54,6 +54,8 @@ Route::middleware('guest')->group(function(){
 	//Login
 	Route::get('sign-in', [SessionsController::class, 'create'])->name('login');
 	Route::post('sign-in', [SessionsController::class, 'store']);
+	
+	
 	Route::post('verify', [SessionsController::class, 'show']);
 	Route::post('reset-password', [SessionsController::class, 'update'])->name('password.update');
 	Route::get('verify', function () {

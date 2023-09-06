@@ -9,7 +9,10 @@ use App\Models\Motor;
 use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Console\Command;
+use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Log;
+
 
 class DemoCron extends Command
 {
@@ -47,15 +50,49 @@ class DemoCron extends Command
         $user = new User();
         $user->email = 'adiganteng630@gmail.com';
         // if ((new \Carbon\Carbon($car->samsat))->diffInDays() <= 15){
-        if ($car){
+        $phone = '6289621791541';
+            if ($car){
             Mail::to($user)->send(new TestMail($car));
             $car->remind = 1;
             $car->save();
+            $message = 'Halo *Nyoman*, Samsat Car *' . $car->nama_mobil . '*
+Plat *' .$car->plat. '*
+Being outdated at *' .$car->samsat.'*
+
+
+Please check your email!' ;
+            $fonnte =  Http::withHeaders([
+                'Content-Type' => 'application/json',
+                'Authorization' => 'Tczj4s4vqhpBr6kitTbj',
+            ])->asForm()->post('https://api.fonnte.com/send', [
+                "target" => $phone,
+                "type"  => "text",
+                "message" => $message,
+                "delay" => 3,
+                'templateJSON' => '{"message":"fonnte template message","footer":"fonnte footer message","buttons":[{"message":"fonnte","url":"https://fonnte.com"}]}',
+            ]);
+            Log::info("Fonnte " . $fonnte->body() .  $phone);
         }
         if ($motor){
             Mail::to($user)->send(new TestMail2($motor));
             $motor->remind = 1;
             $motor->save();
+            $message = 'Halo *Nyoman*, Samsat Motor *' . $motor->nama_motor . '*
+Plat *' .$motor->plat. '*
+Being outdated at *' .$motor->samsat.'*
+
+
+Please check your email!' ;
+            $fonnte =  Http::withHeaders([
+                'Content-Type' => 'application/json',
+                'Authorization' => 'Tczj4s4vqhpBr6kitTbj',
+            ])->asForm()->post('https://api.fonnte.com/send', [
+                "target" => $phone,
+                "type"  => "text",
+                "message" => $message,
+                "delay" => 3,
+            ]);
+            Log::info("Fonnte " . $fonnte->body() .  $phone);
         }
     }
 }

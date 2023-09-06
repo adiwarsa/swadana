@@ -34,5 +34,10 @@ return [
     'telegram-bot-api' => [
         'token' => env('TELEGRAM_BOT_TOKEN', 'YOUR TELEGRAM API')
     ],
+    
+    'whatsapp' => [
+        'from-phone-number-id' => env('WHATSAPP_FROM_PHONE_NUMBER_ID'),
+        'token' => env('WHATSAPP_TOKEN'),
+    ],
 
 ];

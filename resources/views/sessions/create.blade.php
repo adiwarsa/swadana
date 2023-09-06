@@ -8,17 +8,7 @@
                         <div class="col-lg-4 col-md-8 col-12 mx-auto">
                             <div class="card z-index-0 fadeIn3 fadeInBottom">
                                 <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
-                                @if (session('error'))
-                                    @if (session('error')['samsat'])
-                                    <div class="alert alert-danger alert-dismissible text-white" role="alert">
-                                            <span class="text-sm">{{ session('error')['samsat'] }}</span>
-                                            <button type="button" class="btn-close text-lg py-3 opacity-10"
-                                                data-bs-dismiss="alert" aria-label="Close">
-                                                <span aria-hidden="true">&times;</span>
-                                            </button>
-                                        </div>
-                                    @endif
-                                @endif        
+                                      
                                         @if (Session::has('status'))
                                         <div class="alert alert-success alert-dismissible text-white" role="alert">
                                             <span class="text-sm">{{ Session::get('status') }}</span>

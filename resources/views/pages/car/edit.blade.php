@@ -15,7 +15,7 @@
         <!-- End Navbar -->
             @if ($errors->any())
             <div class="alert alert-danger alert-dismissible text-white">
-                <span class="text-sm">Data sudah ada!</span>
+                <span class="text-sm">Data already exists!</span>
                 <button type="button" class="btn-close text-lg py-3 opacity-10" data-bs-dismiss="alert" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
                 </button>
@@ -47,13 +47,15 @@
                         </div>
                     </div>
                     <div class="row mt-2">
-                        <div class="mb-3 col-md-6">
+                        <div class="col-md-6">
                             <label for="harga_sewa">Price Rent</label>
-                            <input type="number" name="harga_sewa" class="form-control border border-2 p-2" value="{{ $car->harga_sewa }}">
+                            <input type="number" id="rupiah" name="harga_sewa" class="form-control border border-2 p-2" value="{{ $car->harga_sewa }}">
+                            <label for="rupiah">*Rp. {{ number_format($car->harga_sewa, 0, '', '.') }}</label>
                         </div>
-                        <div class="mb-3 col-md-6">
+                        <div class="col-md-6">
                             <label for="denda">Fine</label>
-                            <input type="number" name="denda" class="form-control border border-2 p-2" value="{{ $car->denda }}">
+                            <input type="number" id="rupiahdenda" name="denda" class="form-control border border-2 p-2" value="{{ $car->denda }}">
+                            <label for="rupiahdenda">*Rp. {{ number_format($car->denda, 0, '', '.') }}</label>
                         </div>
                     </div>
                     <div class="row mt-2">
@@ -115,7 +117,7 @@
                         @endif
                         </div>
                         <div class="form-group mt-2">
-                            <button type="submit" class="btn btn-primary">Simpan</button>
+                            <button type="submit" class="btn btn-primary">Save</button>
                         </div>
                     </form>
                 </div>
@@ -128,6 +130,24 @@
         $(document).ready(function() {
             $('.select-multiple').select2();
         });
-        </script>
+
+         //Label Price Rupiah
+         var rupiahInput = document.querySelector('#rupiah');
+        var rupiahLabel = document.querySelector('label[for="rupiah"]');
+
+        rupiahInput.addEventListener('input', function(e) {
+        // Format the input value and update the label text content
+        rupiahLabel.textContent = '*'+ formatRupiah(this.value, 'Rp. ');
+        });
+
+        //Label Denda Rupiah
+        var rupiahdendaInput = document.querySelector('#rupiahdenda');
+        var rupiahdendaLabel = document.querySelector('label[for="rupiahdenda"]');
+
+        rupiahdendaInput.addEventListener('input', function(e) {
+        // Format the input value and update the label text content
+        rupiahdendaLabel.textContent = '*'+ formatRupiah(this.value, 'Rp. ');
+        });
+    </script>
 
 </x-layout>

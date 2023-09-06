@@ -8,6 +8,7 @@ use App\Models\Samsat;
 use App\Models\Vendor;
 use Illuminate\Contracts\Session\Session;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session as FacadesSession;
 
 class CarController extends Controller
@@ -19,7 +20,7 @@ class CarController extends Controller
      */
     public function index()
     {
-        $car = Car::with('vendors')->orderBy('status')->get();
+        $car = Car::with('vendors')->orderByDesc('id')->orderBy('status')->get();
         return view('pages.car.car', ['car' => $car]);
     }
 
@@ -156,10 +157,11 @@ class CarController extends Controller
             // Check if the kode_samsat value already exists
             $existing_samsat = Samsat::where('code_samsat', $code_samsat)->first();
             if ($existing_samsat) {
-            // Return an error message if the kode_samsat value already exists
-                return redirect('sign-in')->withError([
-                    'samsat' => 'Samsat already submitted for this car!'
-                ]);
+                if(Auth::check()){
+                    // Return an error message if the kode_samsat value already exists
+                    return redirect('samsat')->with('error', 'Sorry, samsat already added for this car!');
+                }
+                return redirect('sign-in')->with('error', 'Sorry, samsat already added for this car!');
             }
 
         // Create a new Samsat model with the car ID, old samsat value, and kode_samsat value

@@ -12,7 +12,7 @@
         <!-- End Navbar -->
             @if ($errors->any())
             <div class="alert alert-danger alert-dismissible text-white">
-                <span class="text-sm">Data sudah ada!</span>
+                <span class="text-sm">Data already exists!</span>
                 <button type="button" class="btn-close text-lg py-3 opacity-10" data-bs-dismiss="alert" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
                 </button>
@@ -57,7 +57,7 @@
                             </div>
                             
                             <div class="mb-3 col-md-6">
-                                <label class="form-label">Until</label>
+                                <label class="form-label">Return Date</label>
                                 <input type="date" class="form-control border border-2 p-2" id="return_date" name="return_date" required>
                             </div>
                         </div>
@@ -66,7 +66,7 @@
                             <input type="text" class="form-control border border-2 p-2" id="delivery" name="delivery">
                         </div>
                         <div class="mt-2">
-                            <button type="submit" class="btn btn-primary">Simpan</button>
+                            <button type="submit" class="btn btn-primary">Save</button>
                         </div>
                     </form>
                 </div>
@@ -81,6 +81,18 @@
         });
         const startDateField = document.getElementById('rent_date');
         const endDateField = document.getElementById('return_date');
+
+        endDateField.disabled = true;
+
+        // listen for changes in the start date input field
+        startDateField.addEventListener('input', function() {
+        // enable the end date input field if the start date is filled
+        if (startDateField.value !== '') {
+            endDateField.disabled = false;
+        } else {
+            endDateField.disabled = true;
+        }
+        });
 
         startDateField.addEventListener('change', function() {
         endDateField.disabled = false;

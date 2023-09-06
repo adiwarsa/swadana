@@ -8,17 +8,21 @@
         "php": "^8.0.2",
         "barryvdh/laravel-dompdf": "^2.0",
         "cviebrock/eloquent-sluggable": "^9.0",
-        "guzzlehttp/guzzle": "^7.2",
+        "guzzlehttp/guzzle": "^7.5",
         "laravel-frontend-presets/material-dashboard": "^2.0",
         "laravel-notification-channels/telegram": "2.1",
         "laravel/framework": "^9.19",
         "laravel/sanctum": "^3.0",
         "laravel/tinker": "^2.7",
         "laravel/ui": "^4.1",
-        "realrashid/sweet-alert": "^5.1"
+        "netflie/laravel-notification-whatsapp": "^1.0",
+        "opcodesio/log-viewer": "^2.3",
+        "realrashid/sweet-alert": "^5.1",
+        "twilio/sdk": "^7.0"
     },
     "require-dev": {
         "fakerphp/faker": "^1.9.1",
+        "kitloong/laravel-migrations-generator": "^6.10",
         "laravel/pint": "^1.0",
         "laravel/sail": "^1.0.1",
         "mockery/mockery": "^1.4.4",

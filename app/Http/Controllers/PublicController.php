@@ -38,13 +38,13 @@ class PublicController extends Controller
     public function dashboard()
     {
         $user = Auth::user();
-        $data = RentLogs::with('user')->where('user_id', $user->id)->whereNotNull('car_id')->get();
+        $data = RentLogs::with('user')->where('user_id', $user->id)->whereNotNull('car_id')->orderBy('created_at', 'DESC')->get();
         return view('welcome.dashboard', ['data' => $data]);
     }
     public function dashboardmotor()
     {
         $user = Auth::user();
-        $data = RentLogs::with('user')->where('user_id', $user->id)->whereNotNull('motor_id')->get();
+        $data = RentLogs::with('user')->where('user_id', $user->id)->whereNotNull('motor_id')->orderBy('created_at', 'DESC')->get();
         return view('welcome.dashboardmotor', ['data' => $data]);
     }
 
@@ -190,7 +190,8 @@ class PublicController extends Controller
             $motor->update();
             DB::commit();
 
-            $rents->notify(new \App\Notifications\SendNotificationMotor());
+            // $rents->notify(new \App\Notifications\SendNotificationMotor());
+            $rents->notify(new \App\Notifications\CarWhatsappNotification());
             return redirect('cartmotor')->with('success', 'Book successfully.');
         } catch (\Throwable $th) {
             DB::rollBack();

@@ -46,12 +46,18 @@
         <tr>
             <td class="fontBold" style="vertical-align: middle;">Picture</td>
             <td>
-            @if ($data->gambar != '')
-                <img src="{{ asset('storage/profile/'.$data->gambar) }}" alt="" width="250px"> 
+            @if ($data->gambar!='')
+            <img src="{{ asset('storage/profile/'.$data->gambar) }}" 
+            width="250px">
             @else
-                    -
+            @if($data->role_id == 2)
+            <img src="{{ 'assets' }}/img/team-3.jpg" 
+            width="250px">
+            @else
+            <img src="{{ 'assets' }}/img/team-4.jpg" 
+            width="250px">
             @endif
-                  
+            @endif
             </td>
         </tr>
     </table>

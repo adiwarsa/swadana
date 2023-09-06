@@ -23,7 +23,7 @@
                         </div>
                         @if ($errors->any())
                         <div class="alert alert-danger alert-dismissible text-white">
-                            <span class="text-sm">Data sudah ada!</span>
+                            <span class="text-sm">Data already exists!</span>
                             <button type="button" class="btn-close text-lg py-3 opacity-10"
                                     data-bs-dismiss="alert" aria-label="Close">
                                     <span aria-hidden="true">&times;</span>
@@ -88,8 +88,13 @@
                                                         <img src="{{ asset('storage/profile/'.$item->gambar) }}" 
                                                         class="avatar avatar-sm me-3" alt="">
                                                         @else
+                                                        @if($item->role_id == 2)
                                                         <img src="{{ 'assets' }}/img/team-3.jpg" 
                                                         class="avatar avatar-sm me-3" alt="">
+                                                        @else
+                                                        <img src="{{ 'assets' }}/img/team-4.jpg" 
+                                                        class="avatar avatar-sm me-3" alt="">
+                                                        @endif
                                                         @endif
                                                     </div>
                                                 </div>

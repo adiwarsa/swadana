@@ -21,10 +21,11 @@ class MonitoringController extends Controller
             ->get(); // Get all RentLogs with non-null car_id
         foreach ($car as $item) { // Loop through each RentLogs item
             $returnDate = new DateTime($item->return_date); // Create DateTime object for return_date
+            $rentDate = new DateTime($item->rent_date); // Create DateTime object for rent_date
             $now = new DateTime(); // Create DateTime object for current time
             $intervalfine = $now->diff($returnDate); // Calculate the interval between the return_date and now
             $daysfine = $intervalfine->days; // Get the number of days between the return_date and now
-            if ($daysfine > 0) {
+            if ($returnDate < $now) {
                 $denda = $daysfine * $item->car->denda;
                 $item->denda = $denda;
                 $item->daysfine = $daysfine; // Add the number of days to the RentLogs item as a new property
@@ -44,10 +45,11 @@ class MonitoringController extends Controller
             ->get();
             foreach ($motor as $item) { // Loop through each RentLogs item
                 $returnDate = new DateTime($item->return_date); // Create DateTime object for return_date
+                $rentDate = new DateTime($item->rent_date); // Create DateTime object for rent_date
                 $now = new DateTime(); // Create DateTime object for current time
                 $intervalfine = $now->diff($returnDate); // Calculate the interval between the return_date and now
                 $daysfine = $intervalfine->days; // Get the number of days between the return_date and now
-                if ($daysfine > 0) {
+                if ($returnDate < $now) {
                     $denda = $daysfine * $item->motor->denda;
                     $item->denda = $denda;
                     $item->daysfine = $daysfine; // Add the number of days to the RentLogs item as a new property

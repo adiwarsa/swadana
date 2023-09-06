@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Cviebrock\EloquentSluggable\Sluggable;
+use Illuminate\Notifications\Notifiable;
 
 class Vendor extends Model
 {
@@ -19,7 +20,7 @@ class Vendor extends Model
     {
         return [
             'slug' => [
-                'source' => 'name'
+                'source' => ['name', 'type']
             ]
         ];
     }

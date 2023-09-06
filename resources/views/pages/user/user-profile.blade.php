@@ -99,7 +99,7 @@
                                
                                 <div class="mb-3 col-md-6">
                                     <label class="form-label">Phone</label>
-                                    <input type="number" name="phone" class="form-control border border-2 p-2" value='{{ old('phone', auth()->user()->phone) }}'>
+                                    <input type="number" name="phone" class="form-control border border-2 p-2" id="phone" onchange="valueMinus(this.value, 'phone')" value='{{ old('phone', auth()->user()->phone) }}'>
                                     @error('phone')
                                     <p class='text-danger inputerror'>{{ $message }} </p>
                                     @enderror

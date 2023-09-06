@@ -42,8 +42,12 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
+        // Get the type value from the vendor record
+        $type_value = 1;
+
+        // Validate the request data
         $validated = $request->validate([
-            'name' => 'required|unique:categories|max:255',
+            'name' => 'required|unique:categories,name,NULL,id,type,'.$type_value.'|max:255',
         ]);
 
         Category::create([
@@ -55,8 +59,12 @@ class CategoryController extends Controller
 
     public function storemotor(Request $request)
     {
+        // Get the type value from the vendor record
+        $type_value = 2;
+
+        // Validate the request data
         $validated = $request->validate([
-            'name' => 'required|unique:categories|max:255',
+            'name' => 'required|unique:categories,name,NULL,id,type,'.$type_value.'|max:255',
         ]);
 
         Category::create([
@@ -99,7 +107,7 @@ class CategoryController extends Controller
     public function update(Request $request, $slug)
     {
         $validated = $request->validate([
-            'name' => 'required|unique:categories|max:255',
+            'name' => 'required|max:255',
         ]);
         
         $categories = Category::where('slug', $slug)->first();

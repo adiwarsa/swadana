@@ -31,7 +31,7 @@
                     <div class="row mt-2">
                         <div class="mb-3 col-md-6">
                             <label for="phone">Phone</label>
-                            <input type="text" name="phone" class="form-control border border-2 p-2" value="{{ old('phone') }}" required>
+                            <input type="number" id="phone" onchange="valueMinus(this.value, 'phone')" name="phone" class="form-control border border-2 p-2" value="{{ old('phone') }}" required>
                         </div>
                         <div class="mb-3 col-md-6">
                             <label for="address">Address</label>
@@ -59,7 +59,7 @@
                             <input type="file" class="form-control border border-2 p-2" name="image">
                         </div>
                         <div class="form-group mt-2">
-                            <button type="submit" class="btn btn-primary">Simpan</button>
+                            <button type="submit" class="btn btn-primary">Save</button>
                         </div>
                     </form>
                 </div>

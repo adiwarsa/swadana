@@ -14,13 +14,13 @@ class VendorController extends Controller
      */
     public function index()
     {
-        $vendor = Vendor::where('type' , '1')->get();
+        $vendor = Vendor::where('type' , '1')->orderBy('created_at', 'DESC')->get();
         return view('pages.vends.vendor', ['vendor' => $vendor]);
     }
 
     public function motorindex()
     {
-        $vendor = Vendor::where('type' , '2')->get();
+        $vendor = Vendor::where('type' , '2')->orderBy('created_at', 'DESC')->get();
         return view('pages.vends.vendormotor', ['vendor' => $vendor]);
     }
 
@@ -42,8 +42,11 @@ class VendorController extends Controller
      */
     public function store(Request $request)
     {
+        $type_value = 1;
+
+        // Validate the request data
         $validated = $request->validate([
-            'name' => 'required|unique:vendors|max:255',
+            'name' => 'required|unique:vendors,name,NULL,id,type,'.$type_value.'|max:255',
         ]);
         Vendor::create([
             'name' => $request->name,
@@ -54,8 +57,12 @@ class VendorController extends Controller
 
     public function storemotor(Request $request)
     {
+        // Get the type value from the vendor record
+        $type_value = 2;
+
+        // Validate the request data
         $validated = $request->validate([
-            'name' => 'required|unique:vendors|max:255',
+            'name' => 'required|unique:vendors,name,NULL,id,type,'.$type_value.'|max:255',
         ]);
         Vendor::create([
             'name' => $request->name,
@@ -97,7 +104,7 @@ class VendorController extends Controller
     public function update(Request $request, $slug)
     {
         $validated = $request->validate([
-            'name' => 'required|unique:vendors|max:255',
+            'name' => 'required|max:255',
         ]);
 
         $vendor = Vendor::where('slug', $slug)->first();

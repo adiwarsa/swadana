@@ -6,11 +6,13 @@ use Cviebrock\EloquentSluggable\Sluggable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Notifications\Notifiable;
 
 class Car extends Model
 {
     use HasFactory;
     use Sluggable;
+    use Notifiable;
 
     protected $fillable = [
         'nama_mobil', 
