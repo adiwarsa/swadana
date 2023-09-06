@@ -2,7 +2,7 @@
 
 ## Apa itu Sistem Informasi Rental Kendaraan?
 
-Web Sistem Informasi Rental Kendaraan yang dibuat oleh <a href="https://github.com/adiwarsa"> Adhi Ariyadi </a>. **Sistem Informasi Rental Kendaraan adalah Website untuk mengelola rental kendaraan.**
+Web Sistem Informasi Rental Kendaraan yang dibuat oleh <a href="https://github.com/adiwarsa"> Adi Warsa </a>. **Sistem Informasi Rental Kendaraan adalah Website untuk mengelola rental kendaraan.**
 
 ## Fitur apa saja yang tersedia di Sistem Informasi Rental Kendaraan?
 
@@ -18,7 +18,7 @@ Web Sistem Informasi Rental Kendaraan yang dibuat oleh <a href="https://github.c
 
 ## Release Date
 
-**Release date : Mar 2022**
+**Release date : Mar 2023**
 
 > Sistem Informasi Rrental Kendaraan merupakan project skripsi yang dibuat oleh Adi Warsa. Kalian dapat download/fork/clone. Cukup beri stars di project ini agar memberiku semangat. Terima kasih!
 
@@ -38,7 +38,7 @@ Web Sistem Informasi Rental Kendaraan yang dibuat oleh <a href="https://github.c
 1. **Clone Repository**
 
 ```bash
-git clone https://github.com/adhiariyadi/swadana.git
+git clone https://github.com/adiwarsa/swadana.git
 cd swadana
 composer install
 cp .env.example .env
