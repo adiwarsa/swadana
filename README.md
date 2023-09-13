@@ -31,6 +31,9 @@ Web Sistem Informasi Rental Kendaraan yang dibuat oleh <a href="https://github.c
 - email: admin@swadana.com
 - Password: admin
 
+**Admin Default Live Demo**
+- email: admin@gmail.com
+- Password: Admin123
 ---
 
 ## Install
